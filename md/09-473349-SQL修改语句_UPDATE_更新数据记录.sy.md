@@ -8,8 +8,8 @@ enable_checker: true
 
 ## 回忆
 
-- 这次我们从登录表(login)里面删除了数据
-- 表(table)是一个关系(relation)
+- 上次我们从登录表(login)里面删除了数据
+- 表(table)是一个relation(关系)
   - 是行和列的关系
   - 行也叫row、tuple、record
   - 列也叫column、attribute、field
@@ -22,16 +22,17 @@ enable_checker: true
 
 ### 打基础
 
+- 新建一个数据宝库
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220421-1650504473053)
 
-- 新建一个数据宝库
-- 然后建立宝箱的结构
+- 然后建立宝箱(table)的结构
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220421-1650504485232)
 
 - 然后插入3条记录
-- 其实先删除再插入就是修改
-- 但是我想一条命令搞定
+- 修改其实就是先删除再插入
+- 但是我想一条命令完成更新
   - 有可能么？🤔
 
 ### 搜索文档
@@ -50,12 +51,13 @@ enable_checker: true
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220421-1650504770507)
 
-- 确实，而且`oeasy`这条记录变成了最后一条
+- 确实
+	- 而且`oeasy`这条记录变成了最后一条
 - 回看UPDATE命令中
   - 有一个WHERE子句
     - WHERE username='oeasy'
     - 这是对于用户名进行的筛选
-  - 就像DELETE中的一样，只不过
+		- 就像DELETE中的一样，只不过
     - DELETE用于删除
     - UPDATE用于更新
 - 如果我不用WHERE子句进行限制呢？
@@ -82,10 +84,11 @@ enable_checker: true
 
 ### 继续
 
+- 筛子还是那个筛子
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220421-1650505136618)
 
-- 筛子还是那个筛子
-- 只不过修改的
+- 只不过通过SET修改的
   - 不是password属性
   - 而是username属性
 - WHERE负责的是筛选
@@ -121,18 +124,21 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220714-1657807396378)
 
 - 确实可以啊~
-- 学了好多语句了
-- 可以分分类么？
+- 学了好多SQL语句了
+- 总结一下？
 
-### 分类
+### 总结
+
+- SQL分成4大类
+	- 我们目前接触前两类
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220421-1650505507033)
 
-- DDL(Data Definition Language)
+- DDL(Data Definition Language) 数据定义语言
   - CREATE,DROP,ALTER等等
   - DDL命令会影响整个数据库或表结构
   - 控制宝库和宝箱结构
-- DML(Data Manipulate Language)
+- DML(Data Manipulate Language) 数据操作语言
   - INSERT、DELETE、UPDATE和SELECT等等
   - 但DML命令会影响表中的一个或多个记录
   - 在具体结构里面填充数据
@@ -141,7 +147,8 @@ enable_checker: true
 ### 总结
 
 - 这次我们在登录表(login)里面更新了数据
-- 表(table)是一个关系(relation)
+	- 数据存储在表里
+- 表(table)是一个relation(关系)
   - 是行和列的关系
   - 行也叫row、tuple、record
   - 列也叫column、attribute

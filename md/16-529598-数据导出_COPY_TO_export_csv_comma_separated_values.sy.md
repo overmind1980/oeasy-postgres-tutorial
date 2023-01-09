@@ -8,14 +8,17 @@ enable_checker: true
 
 ## 回忆
 
-- 上次我们还原了数据库
-- 本质上就是通过psql执行了相应的sql语句
-- sql语句是将当前数据库传储得到的
-- 然后我们就可以备份还原数据库了
+- 上一次我们还原了数据库
+	- 本质上就是通过psql执行了相应的sql文件
+	- sql文件是将当前数据库传储得到的
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658461343039)
 
-- 不过备份的语句里面好像没有用到INSERT语句
+- 通过这种方法
+	- 我们就可以备份还原数据库了
+	- 这种还原可以无视数据库的版本
+- 不过备份的语句里面
+	- 好像没有用到INSERT语句
 - 那究竟是怎么插入数据的呢？🤔
 
 ### 分析数据
@@ -25,28 +28,26 @@ enable_checker: true
 - 输出应该用的是COPY这条命令
 - 我们可以具体试试么？
 
-### 当前状态
-
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469229709)
-
-- 当前数据库中有三条记录
-
 ### 插入数据
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469258920)
+- 首先连接到oeasydb
+- 把login库清空
 
-- 执行COPY命令
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671246459024)
+
+- 然后执行COPY命令
   - 列之间的分割符是<kbd>Tab</kdb>
   - 行之间的分隔符是<kbd>回车</kdb>
   - 结束输入的分隔符是`\.`
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671246369630)
+
 - 这样真的可以插入数据么？
 
 ### 检查插入结果
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469369876)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671246517108/wm)
 
-- 原来三条记录
-- 现在四条
 - 证明插入成功😄
 - 这个COPY命令怎么理解呢？
 
@@ -61,30 +62,13 @@ enable_checker: true
 
 ### 运行
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469522231)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671248478051)
 
-- 貌似失败了
-- 原因是没有目标文件data
-- 这个语句也不会自动新建
-- 怎么办？😰
+- 观察数据文件
 
-### 先建文件
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671248500286)
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469623286)
-
-- 建好文件之后
-- 给任何人读写权限
-- 然后再回psql运行COPY
-
-### COPY
-
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469703101)
-
-- 执行成功了么？
-
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469724712)
-
-- 好像确实是可以备份数据的
+- COPY真的可以导出数据了！
 - 不过这个数据没有标题行
 - 可以加上标题行么？
 
@@ -99,7 +83,7 @@ enable_checker: true
 
 ### 运行
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220722-1658469983473)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671248618247)
 
 - 报错了
 - 怎么办？
@@ -113,11 +97,7 @@ enable_checker: true
 
 ### 修改代码
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220723-1658535972533)
-
-- 运行结果呢？
-
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220723-1658535985906)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671248750792)
 
 - CSV有个好处
 - 什么好处呢？
@@ -135,32 +115,59 @@ enable_checker: true
 
 ### csv
 
+- csv是一种文件类型 
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220723-1658538191779)
+
+- 为了清楚
+- 我们输出的文件名的扩展名
+	- 应该是csv
+
+### 备份
+
+- 文件名明确来源
+- 扩展名明确文件类型csv
+	- comma separated values
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671249295441)
 
 - 那么csv、电子表格、数据库是什么关系呢？
 
 ### 数据存储
 
+- 三者都是数据存储的方式
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220723-1658538521713)
 
-- 三者都是数据存储的方式
-- 越往上
-  - 文件越小
-  - 格式结构越简单
-- 越往下
-  - 文件越大
-  - 格式结构越复杂
+- csv
+  - 单一文件
+  - 数据无类型
+  - 只有一个基础的表格结构
+- 电子表格
+	- 单一工作簿文件
+	- 数据有类型
+	- 可以有公式计算
+	- 工作簿中可以有多个工作表
+- 数据库
+  - 是一个系统
+  - 数据类型复杂
+  - 多种数据结构
+	- 表
+	- 视图
+	- 查询
+	- ...
+  - 适合于大型系统
 - 数据导出就这样了
-- 我们去总结一下吧
+- 我们去总结一下吧🚶
 
 ### 总结
 
 - 数据导出并不复杂
 - 用的是COPY命令
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220723-1658535972533)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671249295441)
 
 - 确实可以将数据导出
-- 但是如何反过来
-- 再将数据导入呢？🤔
+- 但是如何反过来？
+	- 再将数据导入呢？🤔
 - 我们下次再说！👋🏻

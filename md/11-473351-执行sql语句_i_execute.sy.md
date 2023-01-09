@@ -8,15 +8,23 @@ enable_checker: true
 
 ## 回忆
 
-- 上次总结了整个学到的东西
-  - 建库的法宝postgres
+- 上次总结了学到的东西
+  - 建库的法宝
+	- postgres
   - 数据库
+	- DATABASE
   - 表
+	- TABLE 
   - 数据
-- 他们都可以进行增删改查的操作
-  - 这样就可以建立起属于自己的数据库
+	- DATA
+- 他们都可以进行
+	- 增
+	- 删
+	- 改
+	- 查
+- 这样就可以建立起属于自己的数据库
   - 不过每次建立要打好多字很麻烦
-  - 能否一下子就建立起一个数据呢？🤔
+  - 能否一下子就建立起一个数据库呢？🤔
 
 ### 思路
 
@@ -26,18 +34,21 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650201563773)
 
 - 可以通过
-- \i '/tmp/test.sql' 执行具体的命令？
+	- \i '/tmp/test.sql' 
+	- 执行批处理的sql命令吗？
 - 我们去试试
-- 首先先新建一个sql文件
+- 首先
+	- 先新建一个sql文件
 
 ### 新建
 
+- 使用vi去编辑一个/tmp/test.sql文件
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650201672683)
 
-- 使用vi去编辑一个/tmp/test.sql文件
 - vi 是编辑器
 - /tmp/test.sql 是被编辑的文件
-  - tmp 代表temporary 临时的
+  - /tmp 代表temporary 临时的
   - test 代表测试
   - sql
     - structured query language
@@ -46,23 +57,29 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650201682354)
 
 - 进入之后
-- 注意左下角显示[新文件]
-- 按<kbd>i</kbd>切换进入到插入模式
+	- 注意左下角显示[新文件]
 
 ### 书写程序
 
+- 按<kbd>i</kbd>键
+	- 左下角出现插入
+	- 将vim的模式切换进入到插入模式
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650201682354)
 
-- 按<kbd>i</kbd>左下角出现插入
-- 然后插入新建库的命令
+- 然后
+	- 写新建新建库的sql命令
+	- CREATE TABLE test;
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650202373558)
 
 - 输入完成后
-- <kbd>esc</kbd>退回到正常模式
-- 输入:w进行保存
+	- <kbd>esc</kbd>退回到正常模式
+	- 左下角 `-- 插入 --` 消失
 
 ### 保存程序
+
+- 输入:w进行保存
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650202441067)
 
@@ -76,6 +93,8 @@ enable_checker: true
 
 ### 尝试执行
 
+- 用postgres用户运行psql客户端
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658382927122)
 
 - 执行之后有成功提示
@@ -88,11 +107,18 @@ enable_checker: true
 
 ### 再次执行
 
+- 按方向键<kbd>↑</kbd>找到上一条命令
+	- \i /tmp/test.sql
+	- 回车
+	- 再次运行
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658383018863)
 
 - 这也很合理
-- 执行一次之后
-- 想要再执行就会有问题
+	- 执行一次之后
+	- 就已经有了test这个数据库
+	- 想要再建一个同名的test
+	- 就会报错
 - 我们尝试把数据库初始化程序写得完整一点
   - 建库
   - 建表
@@ -101,38 +127,87 @@ enable_checker: true
 
 ### 重写程序
 
-- 按<kbd>i</kbd>左下角出现‘插入’
-- 然后插入新建库的命令
+- 按<kbd>i</kbd>
+	- 左下角出现`插入`
+	- 然后插入如下的新建库的命令
+
+```
+DROP DATABASE IF EXISTS
+	oeasydb;
+
+CREATE DATABASE
+	oeasydb;
+
+\c oeasydb
+
+CREATE TABLE login(
+	username VARCHAR(20),
+	password VARCHAR(20)
+)
+;
+
+INSERT INTO
+	login(username, password)
+VALUES
+	('oeasy', '123'),
+	('o2z', '456'),
+	('o3z', '789')
+;
+```
+
 - 输入完成后
-- <kbd>esc</kbd>退回到正常模式
-- 输入:w进行保存
+- <kbd>esc</kbd>
+	- 退回到正常模式
+- 输入:w
+	- 保存
+
+### 观察
+
+- 现在的代码
+	- 删库
+	- 建库
+	- 建表
+	- 插入数据
+	- 一气呵成
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658383359963)
 
-- 再开一个终端尝试执行
+- :q
+	- 退出vim
+- 尝试执行这条sql批处理处理命令
 
 ### 尝试执行
+
+- 再次以postgres身份运行psql
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658383589468)
 
 - 执行成功
-- 这样就是连建库到建表到插数据一条龙了🐲
-- 但是两个窗口切来切去很麻烦
-- 能否不进入psql就把整个一条龙给做了呢？
+- 这样就是
+	- 连建库
+	- 到建表
+	- 到插数据
+	- 一条龙了🐲
+- shell中进出psql很麻烦
+- 能否不进入psql
+	- 就把整个一条龙给做了呢？
 
 ### 总结
 
 - 这次我们编辑了sql文件
   - sql文件是纯文本文件
-  - sql批量处理并执行sql命令
-- 而且我们执行了sql文件
-  - 在postgres中可以执行sql文件
-  - `\i /tmp/test.sql`
-- 但是编辑和执行分别在两个状态
-  - shell和psql
-  - 切来切去很麻烦
-  - 能否在一个状态中就连编辑带执行
-  - 一条龙全做了呢？🤔
-- 下次再说 👋
+  - sql批量处理sql命令
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658383948877)
+
+- 然后我们执行了sql文件
+  - 在postgres中
+  - `\i /tmp/test.sql`
+  - 执行sql文件
+- 但是编辑和执行分别在两个模式·
+  - shell
+  - psql
+- 切模式很麻烦
+  - 能否在一个模式中就连编辑带执行
+  - 一条龙全做了呢？🤔
+- 下次再说 👋

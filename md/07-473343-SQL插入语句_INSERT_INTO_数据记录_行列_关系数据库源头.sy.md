@@ -8,24 +8,34 @@ enable_checker: true
 
 ## 回忆
 
-- 查询语句SELECT
-  - 可以计算2+2
+- SELECT 是查询命令
+  - 可以计算 2+2
   - 可以查询版本号
   - 还可以查询有哪些表
-- 但是新建的login表中
+    - SELECT \* FROM pg_tables;
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650456766122)
+
+- 但是新建的 login 表中
   - 没有数据
-- 就好像
-  - 数据宝库的格子里面没有宝贝一样
-  - 如何把宝贝放到格子里？
-  - 或者说把数据插到表里面？🤔
+- 就像
+  - 数据宝库的宝箱里面没有宝贝一样
+- 如何把宝贝放到格子里？🤔
+- 或者说把数据插到表里面？🤔
 
 ### 查询帮助
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650457248213)
 
+- INSERT 命令应该是
+	- 向表中插入数据
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650179572150)
 
 ### 例子
+
+- <kbd>G</kbd>
+	- 翻到最后去找例子
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650458492948)
 
@@ -40,30 +50,29 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650458710515)
 
 - 真的插入成功了么？
-- 我叫你一声
-- 你敢出来吗？
+- 我去问问数据库
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650458755299)
 
 - 真的出来了！！！
-- 去对比帮助中的语句
+- 对比一下帮助手册中的语句
 
 ### 查询帮助
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650458978937)
-
 - 红色的部分
-  - 是基本的结构
   - INSERT INTO login
+  - 是基本的结构
 - 黄色的部分是
   - (username,password)
   - 是表的描述
   - 在中括号中
   - 是可省略的
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650458978937)
+
 - 绿色的部分
-  - 是大括号里面的
-    - 大括号里面的至少要写一次
-  - 大括号里面用|分隔开
+    - VALUES('oeasy','123')
+- 大括号里面用|分隔开
     - |之间是或者的选择关系
   - 我们选的是后面的VALUES
     - expression 是 'oeasy'
@@ -71,40 +80,46 @@ enable_checker: true
     - 逗号后面跟另一个expression
       - '123'
   - 合在一起就是
-    - VALUES('oeasy','123')
     - 是插入的具体内容
+    - VALUES('oeasy','123')
 
 - 我们试试省略表结构
 
 ### 省略
 
+- 将表结构中的列名省略
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650459421362)
 
-- 果然表结构是可省略的
+- 依然可以插入数据
+	- 果然表结构是可省略的
 - 但是可能会有什么问题么？
 
 ### 列序
 
 - 如果不明确指定列名
-- 可能插乱
+	- 可能插错位置
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220425-1650844586843)
 
-- 绿框中的就是插歪了
-- 插拧巴了
-- 驴唇不对马嘴
-- 最好还是把列元组写清楚
-- 列元组必须按照建表时候的顺序么？
+- 绿框中的就是插错位置了
+	- 驴唇不对马嘴
+	- 最好还是把列元组写清楚
+- 列的顺序必须按照建表时候的顺序么？
 
 ### 插入
 
+- 插入时列的次序是不固定的
+	- 但只要对应好就可以
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650459800030)
 
-- 插入时列的次序不是固定的
-- 现在数据库postgres的login表中有了4行
-- 这套理论是谁提出来的呢？
+- 现在数据库postgres的login表中有4行了
+- 这4行其实来自于数据库基本理论
 
 ### 理论来源
+
+- 1970年的一篇文档
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650180801566)
 
@@ -114,18 +129,24 @@ enable_checker: true
 
 ### 祖师
 
+- IBM的工程师艾加德.柯德
+	- E.F. Codd
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650180941243)
 
-- 1970，IBM的工程师艾加德.柯德提出
-- 祖师爷提出了元组和属性的关系模型
+- 他提出了关系模型
 
 ### 关系模型之前
 
+- 原来的数据库都是层次结构的
+	- 就像今天的文件系统结构一样
+	- 最初的存储介质是卡片和柜子
+	- 一个员工一个盒子
+		- 里面存着档案和工资记录之类的东西
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650181030487)
 
-- 在此之前的数据库都是层次结构的
-- 就像今天的文件系统结构一样
-- 最初的存储介质是卡片和柜子
+- 这种层次结构被引用到了计算机之中
 
 ### 层次结构发展
 
@@ -135,18 +156,18 @@ enable_checker: true
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220418-1650292246063)
 
-- 发展到多个父文件夹来源的网络结构
-- 越来越复杂
+- 利用软连接之类的方式构成了
+	- 比较复杂的网状关系
 - Codd把他简化成关系表结构
-- 那什么是关系表结构(relation)呢？
+	- 那什么是关系(relation)表结构呢？
 
 ### 二维关系表
 
-- 关系表结构就是二维表
+- 关系(relation)表结构就是二维表
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650181142426)
 
-- 如何理解关系表结构(relation)呢？
+- 这二维指的是哪二维呢？
 
 ### 关系模型
 
@@ -154,20 +175,25 @@ enable_checker: true
   - 行和列构成的
   - 一个关系(relation)
 
-- 横着的行(row)被称为
+- 横着的
+  - 叫行(row)
   - 元组(tuple)
   - 记录(record)
 
-- 竖着的列(column)
+- 竖着
+  - 叫列(column)
   - 领域(field)
   - 属性(attribute)
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650181704214)
 
-- Codd在70年的这篇文章最开始使用attribute作为数据的术语(term)
+- 这篇1970年的文章
+	- 开始使用attribute作为数据的术语(term)
 - attribute指的是什么呢？
 
-### 字段 attribute
+### attribute 属性 字段
+
+- login有两个字段
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650181441489)
 
@@ -181,6 +207,9 @@ enable_checker: true
 - attribute 这个词是怎么来的呢？
 
 ### 词源
+
+- tribe
+	- 部落
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650181862293)
 
@@ -204,16 +233,16 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650181894650)
 
 - retribute指的是返还的礼物
-- 又跑题了
-- attribute怎么来的？
+- 那attribute怎么来的？
 
 ### attribute
 
+- 动词[əˈtrɪbjuːt]是归因
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650181901593)
 
-- 动词是归因
-- 名词是属性
-- 登录表(login)有两个属性(attribute)
+- 名词[ˈætrɪbjuːt]是属性
+- 登录表(login)有两个属性(attributes)
   - username
   - password
 - 那最初的文章如何称呼行呢？
@@ -227,32 +256,34 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650182732560)
 
 - 元组是由属性构成的
-- 一个元组对应着一行
-- 也叫做记录(record)
+	- 一个n元组对应着一行
+	- 也叫做一条记录(record)
 
 ### record
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650182779884)
-
-- 上表中共有
+- 下表中共有
   - 3行数据(rows)
   - 3条记录(records)
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650182779884)
+
 - 每行数据
   - 都是一个2元组(2-tuple)
-  - 有2个域(fields)
-  - 有2个列(columns)
-  - 有2个属性(attributes)
+  - 包括
+	  - 2个域(fields)
+	  - 或者说2个列(columns)
+	  - 或者说2个属性(attributes)
 
 ### 总结
 
-- 这次我们往登录表(login)里面插入了数据
-- 表(table)
+- 这次我们往登录(login)表里面插了数据
+- 所谓表(table)
   - 是一个关系(relation)
-  - 是行和列的关系
+	  - 是行和列的关系
   - 行也叫row、tuple、record
   - 列也叫column、attribute、field
-- 插入了数据之后
+- 插入数据之后
   - 可以通过SELECT查询看到
-  - 有新建就有删除
-  - 记录可以进行删除么？🤔
+- 有插入就有删除
+  - 删除表中的数据吗？🤔
 - 下次再说 👋

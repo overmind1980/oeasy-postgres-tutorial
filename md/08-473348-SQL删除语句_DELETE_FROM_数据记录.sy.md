@@ -8,18 +8,20 @@ enable_checker: true
 
 ## 回忆
 
-- 这次我们往登录表(login)里面插入了数据
-- 表(table)
+- 上次我们往登录(login)表里面插了数据
+- 所谓表(table)
   - 是一个关系(relation)
-  - 是行和列的关系
+	  - 是行和列的关系
   - 行也叫row、tuple、record
   - 列也叫column、attribute、field
-- 插入了数据之后
+- 插入数据之后
   - 可以通过SELECT查询看到
-  - 有新建就有删除
-  - 记录可以进行删除么？🤔
+- 有插入就有删除
+  - 删除表中的数据吗？🤔
 
 ### 查询帮助
+
+- 查询一下DELETE的帮助文档
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650184591641)
 
@@ -28,22 +30,24 @@ enable_checker: true
 
 ### 准备
 
+- 看看表里面有几行？
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650464171462)
 
-- 看看表里面有几行
-- 看起来目前有4行
+- 有4行
 - 如果是0行
-- 就先INSERT INTO 几行进去
-- 然后再删除
+	- 就先INSERT INTO 几行进去
+	- 然后再删除
 
 ### 删除
 
+- 这...
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650464265645)
 
-- 这...
 - 删除是真的能删除
-- 但是一删除就把整个表给清空了
-- 3条记录一下子全没了
+	- 但是一删除就把整个表给清空了
+	- 3条记录一下子全没了
 - 还得重新插入记录
 
 ### 重新插入
@@ -56,8 +60,9 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650185065867)
 
 - 手册里的中括号都是可省略的
-- 不过我们试过，容易乱
-- 还是写清楚列名
+	- 不过我们试过的
+		- 容易乱
+	- 还是写清楚列名
 - 那我们想要一次插入多个数据可以么？
 
 ### 先查手册
@@ -76,15 +81,16 @@ enable_checker: true
 
 ### 表的结构
 
+- 这一切的思路	
+	- 出自Codd的一篇文章
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650185174604)
 
-- 这一切的思路
-- 出自Codd的一篇论文
 - 把整个数据库从层次式的文件夹结构变成二维的表结构
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220417-1650185248032)
 
-- 表就是关系relation
+- 表就是relation关系
   - 是行和列的关系
   - 行也叫元组、记录
   - 列也叫属性、域
@@ -120,7 +126,7 @@ enable_checker: true
 ### 总结
 
 - 这次我们从登录表(login)里面删除了数据
-- 表(table)是一个关系(relation)
+- 表(table)是一个relation(关系)
   - 是行和列的关系
   - 行也叫row、tuple、record
   - 列也叫column、attribute、field
