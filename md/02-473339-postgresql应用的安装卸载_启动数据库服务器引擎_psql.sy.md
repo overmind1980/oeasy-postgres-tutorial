@@ -48,9 +48,8 @@ enable_checker: true
 
 ### 更新源
 
-- 我们安装 postgresql 之前要先更新软件源
-  - sudo apt update
-  - sudo是用管理员权限执行命令的意思
+- 键入sudo apt update
+	- 安装 postgresql 之前要先更新软件源
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221209-1670581266891)
 
@@ -58,9 +57,9 @@ enable_checker: true
 
 ### 安装postgres
 
-- 安装
-	- sudo apt install postgresql
-	- apt 是 Advanced Package Tool(高级包工具)
+- 键入sudo apt install postgresql
+- apt 是 
+	- `a`dvanced `p`ackage `t`ool(高级包工具)
 	- 可以在 [oeasy教您玩转linux](https://www.lanqiao.cn/courses/2712?tab=labsList) 中找到详细资料
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221209-1670581985170)
@@ -126,14 +125,17 @@ enable_checker: true
 
 - 用管理员权限以 postgres 用户方式运行psql
   - 终于成功！！！
-  - 为什么这么麻烦？
+- 为什么还需要新账号
+	- 才能运行pg？
 
 ### 分离
 
 - postgres 做了角色隔离
 	- 系统管理员(System Administrator)
+		- root
 	- 数据库管理员(DataBase Administrator)
-	- 对应两个用户名
+		- postgres
+- 两个用户名
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221209-1670588381128)
 
@@ -174,8 +176,10 @@ enable_checker: true
   - 也可以卸载他么？
 
 ### 卸载postgresql
-
-- sudo apt remove postgresql*
+- 先叉掉 
+	- 当前用postgres登录的终端窗口
+	- 然后新打开一个中端
+- 键入 `sudo apt remove postgresql*`
   - 注意结尾的星号
   - 星号就是通配符(混儿)
   - 可以代表任意多个任何字符
@@ -187,7 +191,6 @@ enable_checker: true
 	- psql 程序就找不到了
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220419-1650375090968)
-
 
 - 法宝被废掉了
   - 就找不到了
@@ -207,5 +210,6 @@ enable_checker: true
 	  - 再以 postgres 用户身份进入
 	- 最后我们卸载了 postgresql
 - 法宝有了
-	- 到底怎么建立起属于自己的数据宝库呢？🤔
+	- 到底怎么建立起
+		- 属于自己的数据宝库呢？🤔
 - 下次再说 👋

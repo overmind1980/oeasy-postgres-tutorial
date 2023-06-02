@@ -24,7 +24,7 @@ enable_checker: true
 
 ### 再次进入
 
-- sudo -u postgres psql
+- 键入 `sudo -u postgres psql`
   - sudo
     - 使用管理员权限
   - -u postgres
@@ -32,10 +32,12 @@ enable_checker: true
   - psql
     - postgres的命令行程序
 
+- 提示说让我们
+	- help for help
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220416-1650074512962)
 
-- 提示说让我们help for help
-- 第一个是
+- 第一行是
   - \copyright
   - 版权说明
 
@@ -60,19 +62,23 @@ enable_checker: true
 	- 直接、间接、特殊、偶然或后果性损害
 	- 包括因使用本软件及其产品而产生的利润损失文件
 	- 即使加利福尼亚大学已被告知这种损害的可能性
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230302-1677761982599)
+
 - 加利福尼亚大学特别否认任何保证
 	- 包括但不限于对适销性的默示保证
 	- 以及特定用途的健身
 	- 以下提供的软件是在“原样”的基础上
 	- 加利福尼亚大学没有义务提供维护、支持、更新、增强或修改
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650419414374)
-
+### 免责
 
 - 看起来好像不用负任何费用
   - 而且也没有任何责任
   - 法宝威力太大
   - 版权就是要免责😅
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220420-1650419414374)
+
 - 我们继续help看看帮助
 
 ## 查看帮助
