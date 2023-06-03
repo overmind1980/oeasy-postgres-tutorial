@@ -1,6 +1,5 @@
 - [Github地址](https://github.com/overmind1980/oeasypostgres)
 - [Gitee地址](https://gitee.com/overmind1980/oeasypostgres)
-- [蓝桥实验楼 邀请码:CHD6PJZ1](https://www.lanqiao.cn/courses/2782)
 
 - 从零开始
     -  初步接触
