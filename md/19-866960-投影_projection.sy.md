@@ -22,11 +22,17 @@ enable_checker: true
 
 ### 建立基础
 
+- 在shell中运行以下语句
+
 ```
 sudo -u postgres psql -c "CREATE DATABASE sanguo;"
 sudo -u postgres psql sanguo -c "CREATE TABLE heroes(id serial, name VARCHAR(20),fight int,intelligence int);"
 sudo -u postgres psql sanguo -c "INSERT INTO heroes(name, fight, intelligence) VALUES('刘备',60,65),('关羽',96,96),('张飞',98,60);"
 ```
+
+- 运行结果
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230609-1686277896094)
 
 ### 观察效果
 
@@ -40,8 +46,8 @@ sudo -u postgres psql sanguo -c "INSERT INTO heroes(name, fight, intelligence) V
 
 ### 武将名称
 
-- 只SELECT name
-	- 就可以只要武将名称这一列
+- 只 SELECT name这一列
+	- 就可以只看 武将名称 了
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230303-1677809123962)
 
@@ -69,9 +75,9 @@ sudo -u postgres psql sanguo -c "INSERT INTO heroes(name, fight, intelligence) V
 	- prohibit = pro + forbid 事先禁止
 	- provide = pro + view 事先看过
 	- promise = pro + mission 事前承诺使命
-	- promote 促进
-	- profit 利润
-	- process 步骤、进展
+	- promote = pro + move 向前移动 促进
+	- profit =  pro + fict 提前制作 利润
+	- process = pro + go 向前走 步骤、进展
 		- 在计算机中
 			- process也指进程
 			- 占内存里面的一段空间
@@ -124,6 +130,7 @@ sudo -u postgres psql sanguo -c "INSERT INTO heroes(name, fight, intelligence) V
 
 - 上图中
 	- Harry 和 Peter
+		- 由于年龄和体重都相同
 	- 被投到一起了吗？
 - 去构造一个例子
 

@@ -307,6 +307,9 @@ enable_checker: true
 ## 总结
 
 - 我们了解了数据库的排行
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230907-1694093715005)
+
 - 分析了前三名
   - oracle
   - mysql

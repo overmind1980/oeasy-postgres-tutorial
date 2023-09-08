@@ -16,8 +16,8 @@ enable_checker: true
 
 - 然后我们执行了sql文件
   - 在postgres中
-  - `\i /tmp/test.sql`
-  - 执行sql文件
+	  - `\i /tmp/test.sql`
+	  - 执行sql文件
 - 但是编辑和执行分别在两个模式·
   - shell
   - psql
@@ -28,18 +28,23 @@ enable_checker: true
 
 ### 先查帮助
 
-- help
+- 首先还是要以postgres的身份
+	- 运行psql
+- 然后在psql中 help
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221216-1671187613185)
 
 - \?查询psql命令
-- 搜索执行外部命令的的方式
+	- 搜索执行外部命令的的方式
 
 ### 搜索
+- 执行的单词是execute
+	- 可以搜索ex找到相关信息
+- /ex 在帮助文档中 搜索ex
+	- 找到红框中的方式
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671246753457)
 
-- /ex 找到红框中的方式
 - 尝试在psql中运行外部命令vim
 
 ### 运行外部命令
@@ -54,14 +59,16 @@ enable_checker: true
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671247381870)
 
 - 编辑器的配色方案比较原始
-- 而且文件是只读的
-- 有没有直接编辑文件的命令呢？
+	- 而且文件是只读的
+- 有没有
+	- 可以 直接编辑文件的 命令 呢？
 
 ### 编辑命令
 
+- 在psql中是可以直接编辑文件的
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658390085992)
 
-- 在psql中是可以直接编辑文件的
 - 我们试试
 
 ### 编辑sql文件
@@ -86,15 +93,20 @@ enable_checker: true
 
 ### 所有者问题
 
-- 进入psql使用的是postgres身份
+- 进入 psql 使用的是 postgres身份
+	- 而 /tmp/test.sql 的所有者为 shiyanlou
+- 可以将 /tmp/test.sql 的所有者
+	- 设置为 postgres 
+- 注意这次所有权变化
+	- postgres 从 shiyanlou 手里抢得
+		- /tmp/test.sql的所有权之后
+	- shiyanlou 就失去了
+		- 对 /tmp/test.sql 的写权限
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658390504342)
 
-- 而/tmp/test.sql的所有者为shiyanlou
-- 我们可以通过设置所有者的方式
-  - 来解决这个问题
-  - 然后再去
-	  - \e /tmp/test.sql
+- 然后再去
+  - \e /tmp/test.sql
 
 ### 可写
 
@@ -132,24 +144,27 @@ enable_checker: true
 	- 尝试着删除oeasydb
 	- 就像在当前文件夹中删除当前文件夹
 	- 人不能靠提着头发跳起来
-- 尝试修改/tmp/test.sql
+- 尝试修改
+	- \e /tmp/test.sql
 	- 在最开始的时候添加一句
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658390916701)
 
-- 先从oeasydb中退出来
+- 先从oeasydb中退到postgres中
 	- 再去尝试删除
 
 ### 尝试运行
 
+- 这次可以顺利成功了
+	- 都是在psql里面进行的
+		- \e 进行编辑
+		- \i 进行运行
+
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658391078970)
 
-- 这次可以顺利成功了
-- 这次都是在psql里面进行的
-  - \e 进行编辑
-  - \i 进行运行
 - 不过配色方案有点问题
-- 我们使用shiyanlou的vim配置
+- 想要使用
+	- 默认用户shiyanlou的vim配置
 
 ### 复制vim配置文件
 
@@ -160,7 +175,7 @@ enable_checker: true
 - 将vim配置文件.vimrc
 	- 从/home/shiyanlou
 	- 复制到
-	- /var/lib/postgres
+	- /var/lib/postgres中
 - 再运行psql
 
 ### 观察默认编辑器
@@ -173,18 +188,21 @@ enable_checker: true
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221216-1671193200275)
 
-- 我们先总结吧
+- 先到这里
+	- 去总结吧
 
 ### 总结
 
 - 这次想要解决
-	- 在shell和psql中来回反复横跳的问题
+	- 在shell和psql中来回反复切换的问题
 - 全都在psql中执行
   - \e 进行编辑
   - \i 进行运行
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20220721-1658391401106)
 
-- 这样就可以不用\q退回到shell了编辑sql了
+- 这样就可以不用
+	- 先\q退回到shell
+	- 再进vim了编辑sql了
 - 还有更好用的工作流么？
 - 我们下次再说
