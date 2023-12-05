@@ -1,4 +1,4 @@
-# oeasy 教您玩转  SQL (PostgreSQL 数据库)
+## oeasy 教您玩转  SQL (PostgreSQL 数据库)
 
 PostgreSQL 是世界上最先进的开源数据库，和 MySQL 那种流量明星不同，PostgreSQL 深受资深开发人员的喜爱。在资深开发者眼中，PostgreSQL 一直是非常好用的数据库工具。
 
