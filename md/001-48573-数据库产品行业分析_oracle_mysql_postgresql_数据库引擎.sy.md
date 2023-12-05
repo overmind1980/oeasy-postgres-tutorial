@@ -1,5 +1,5 @@
 ---
-show: step
+show: i1        step
 version: 1.0
 enable_checker: true
 ---
