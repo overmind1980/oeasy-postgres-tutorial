@@ -1,23 +1,8 @@
-- [Github地址](https://github.com/overmind1980/oeasypostgres)
-- [Gitee地址](https://gitee.com/overmind1980/oeasypostgres)
+# oeasy 教您玩转  SQL (PostgreSQL 数据库)
 
-- 从零开始
-    -  初步接触
-        - [行业分析](./md/01-48573-行业分析.sy.md)
-        - [安装卸载](./md/02-473339-安装卸载.sy.md)
-        - [数据库(DataBase)的管理](./md/03-48572-数据库(DataBase)的管理.sy.md)
-        - [数据表(Table)的管理](./md/04-472863-数据表(Table)的管理.sy.md)
-        - [查询数据SELECT](./md/05-472864-查询数据SELECT.sy.md)
-        - [插入数据记录INSERT](./md/06-473343-插入数据记录INSERT.sy.md)
-        - [删除数据记录DELETE](./md/07-473348-删除数据记录DELETE.sy.md)
-        - [修改数据记录UPDATE](./md/08-473349-修改数据记录UPDATE.sy.md)
-        - [基本操作总结](./md/09-473350-基本操作总结.sy.md)
-    - 备份还原、导入导出
-        - [执行sql语句 i](./md/10-473351-执行sql语句%20i.sy.md)
-        - [在psql中编辑并运行sql语句](./md/11-527307-在psql中编辑并运行sql语句.sy.md)
-        - [在vim中执行外部命令psql](./md/12-529385-在vim中执行外部命令psql.sy.md)
-        - [数据库的转储备份pg_dump](./md/13-529399-数据库的转储备份pg_dump.sy.md)
-        - [数据库的还原](./md/14-529584-数据库的还原.sy.md)
-        - [数据导出](./md/15-529598-数据导出.sy.md)
-        - [数据导入](./md/16-529612-数据导入.sy.md)
-        - [备份还原、导入导出总结](./md/17-529614-备份还原、导入导出总结.sy.md)
+PostgreSQL 是世界上最先进的开源数据库，和 MySQL 那种流量明星不同，PostgreSQL 深受资深开发人员的喜爱。在资深开发者眼中，PostgreSQL 一直是非常好用的数据库工具。
+
+- 作者: [oeasy](https://www.lanqiao.cn/users/1190679/)
+- 链接: https://www.lanqiao.cn/courses/2782
+
+![](https://dn-simplecloud.shiyanlou.com/courses/uid734839-20220812-1660295835018)
