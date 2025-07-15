@@ -161,7 +161,7 @@ sudo apt install libreoffice
 
 ### 分列工作
 
-- 选中 H列
+- 选中 `F列`
 	- 进行分列
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230902-1693646745629)

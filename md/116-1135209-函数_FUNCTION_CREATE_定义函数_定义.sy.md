@@ -48,30 +48,32 @@ SELECT add(1,2)
 \c chinese_food_city
 
 CREATE OR REPLACE FUNCTION delete_bill_by_shop(
-    var_shop character varying(10)
+	var_shop character varying(10)
 )
 RETURNS void AS $$
 DECLARE
-	var_dk_id TEXT;
+var_dk_id TEXT;
 BEGIN
-  SELECT 
-	stall.dk_id
-  INTO
-    var_dk_id
-  FROM
-	stall
-  WHERE
-	stall.shop = var_shop;
-  RAISE NOTICE '档口id是: %!', var_dk_id;
-  
-  DELETE 
-  FROM
-	bill
-  WHERE
-	bill.dk_id = var_dk_id;
+	SELECT 
+		stall.dk_id
+	INTO
+		var_dk_id
+	FROM
+		stall
+	WHERE
+		stall.shop = var_shop;
+	RAISE NOTICE '档口id是: %!', var_dk_id;
+
+	DELETE 
+	FROM
+		bill
+	WHERE
+		bill.dk_id = var_dk_id;
 
 END;
 $$ LANGUAGE plpgsql;
+
+
 ```
 
 - 定义结果

@@ -32,26 +32,26 @@ enable_checker: true
 ### 可变长 VARCHAR
 
 ```
-CREATE TABLE test1 (a VARCHAR(4));
-INSERT INTO test1 VALUES ('ok');
-SELECT a, char_length(a) FROM test1; 
+CREATE TABLE bian (a VARCHAR(4));
+INSERT INTO bian VALUES ('ok');
+SELECT a, char_length(a) FROM bian; 
 ```
 
 - 插入正常
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688029402291)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714700042584)
 
 - 如果插入的字符串超过可变长的范围4呢？
 
 ### 超过限度
 
 ```
-INSERT INTO test1 VALUES ('oeasy');
+INSERT INTO bian VALUES ('oeasy');
 ```
 
 - 运行结果
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688029472064)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714700052712)
 
 - 直接报错
 - 可以先截取字符串吗？
@@ -59,14 +59,14 @@ INSERT INTO test1 VALUES ('oeasy');
 ### 先截取 再插入
 
 ```
-INSERT INTO test2 VALUES ('oeasy'::varchar(4)); 
+INSERT INTO bian VALUES ('oeasy'::varchar(4)); 
 -- explicit truncation
-SELECT a, char_length(a) FROM test1; 
+SELECT a, char_length(a) FROM bian; 
 ```
 
 - 运行结果
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688029654397)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714700128517)
 
 - 截取之后
 	- 确实是可以插入的
@@ -78,13 +78,13 @@ SELECT a, char_length(a) FROM test1;
 ### 超过限度
 
 ```
-INSERT INTO test1 VALUES ('oea    ');
-SELECT a, char_length(a) FROM test1; 
+INSERT INTO bian VALUES ('oea    ');
+SELECT a, char_length(a) FROM bian; 
 ```
 
 - 运行结果
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688029912166)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714700292426)
 
 - 以上是不定长的列
 - 定长的列什么效果呢？
@@ -92,46 +92,78 @@ SELECT a, char_length(a) FROM test1;
 ### 定长的列
 
 ```
-CREATE TABLE test2 (a CHAR(4));
-INSERT INTO test2 VALUES ('ok');
-SELECT a, char_length(a) FROM test2; 
+CREATE TABLE ding (a CHAR(4));
+INSERT INTO ding VALUES ('ok');
+SELECT a, char_length(a) FROM ding; 
 ```
 
 - 结果
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688030205668)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714700355521)
 
 - 插入、查询方式和VARCHAR一样
 - 溢出的效果呢？
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688030328921)
+### 溢出效果
+
+```
+INSERT INTO ding VALUES ('oeasy');
+INSERT INTO ding VALUES ('oeasy'::CHAR(4));
+```
 
 - 溢出效果也一样
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714701092353)
+
 - 这两种类型有什么不一样吗？
 
 ### VARCHAR 和 CHAR 的不同
 
-- test1中类型为VARCHAR(4)
-- test2中类型为CHAR(4)
+```
+INSERT INTO bian VALUES ('ok ');
+SELECT a,char_length(a) FROM bian;
+```
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688030387883)
+- bian中类型为VARCHAR(4)
 
-- 定长就直接存储
-- 可变长会自动加上空格
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714701359093)
+
+- 最后一个ok有空格
+
+### 定长
+
+- ding中类型为CHAR(4)
+
+```
+INSERT INTO ding VALUES ('ok ');
+SELECT a,char_length(a) FROM ding;
+```
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714701415565)
+
+- 最后一个ok没有加空格
+
+- 变长就带结尾空格直接存储
 
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688030898210)
 
+- 定长会自动结尾补全空格
 - 但是在 char_length 的时候
 	- 又会去掉结尾部分的空格
 - 对于char_length 函数
 	- 如果非ASCII字符
-		- 究竟是按照字符数还是字节数呢？
+	- 究竟是按照字符数还是字节数呢？
 
 ### 字节还是字符？
 
+```
+INSERT INTO ding VALUES ('一');
+SELECT a,char_length(a) FROM ding;
+```
+
 - 构造环境
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688031505077)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714701610497)
 
 - 是按照字符数来的
 - 可以在帮助文件中查到吗？
@@ -157,12 +189,12 @@ SELECT
     bit_length(a),
     octet_length(a)
 FROM 
-    test2; 
+    ding; 
 ```
 
 - 运行结果
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20230629-1688032242527)
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240503-1714701659328)
 
 - 以上两种列的数据类型
 	- VARCHAR 和 CHAR

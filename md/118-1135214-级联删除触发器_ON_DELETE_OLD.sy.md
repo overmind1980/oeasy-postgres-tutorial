@@ -22,11 +22,11 @@ enable_checker: true
 
 ```
 DROP DATABASE 
-	chinese_food_city;
+    chinese_food_city;
 
 CREATE DATABASE
-	chinese_food_city;
-	
+    chinese_food_city;
+    
 \c chinese_food_city
 
 CREATE TABLE public.bill (
@@ -45,24 +45,26 @@ CREATE TABLE public.stall (
 
 
 
-COPY public.bill (ic_id, dk_id, deal_time, price) FROM stdin;
-ic2034123	dk1000234	2023-09-30 11:30:01	15
-ic2052342	dk1001584	2023-09-30 11:33:03	30
-ic2034123	dk1001584	2023-09-30 11:34:04	3
-ic2033233	dk1003324	2023-09-30 11:36:23	20
-ic2035678	dk1000436	2023-09-30 11:36:44	20
-ic2034434	dk1001584	2023-09-30 11:37:51	25
-ic1034139	dk1003324	2023-09-30 11:38:23	20
-\.
+INSERT INTO
+	 public.bill (ic_id, dk_id, deal_time, price)
+VALUES
+	('ic2034123','dk1000234','2023-09-30 11:30:01','15'),
+	('ic2052342','dk1001584','2023-09-30 11:33:03','30'),
+	('ic2034123','dk1001584','2023-09-30 11:34:04','3'),
+	('ic2033233','dk1003324','2023-09-30 11:36:23','20'),
+	('ic2035678','dk1000436','2023-09-30 11:36:44','20'),
+	('ic2034434','dk1001584','2023-09-30 11:37:51','25'),
+	('ic1034139','dk1003324','2023-09-30 11:38:23','20')
+;
 
-
-
-COPY public.stall (dk_id, shop, shop_owner) FROM stdin;
-dk1000436	饭是钢	胡小喵
-dk1000234	兰州拉面	刘老根
-dk1003324	煎饼虎头军	胡小喵
-dk1001584	老家肉饼	刘老根
-\.
+INSERT INTO 
+	public.stall (dk_id, shop, shop_owner)
+VALUES 
+	('dk1000436','饭是钢','胡小喵'),
+	('dk1000234','兰州拉面','刘老根'),
+	('dk1003324','煎饼虎头军','胡小喵'),
+	('dk1001584','老家肉饼','刘老根')
+;
 
 ```
 
@@ -125,7 +127,7 @@ FROM
 ![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20231006-1696563113215)
 
 - 触发器发生了作用
-	- bill表还剩下一条记录
+	- bill表 减少了 该档口的纪录
 
 ##  总结
 

@@ -100,7 +100,7 @@ VALUES(1,'赵云',96,96);
 ```
 ALTER TABLE
     heroes
-DROP CONSTRIANT
+DROP CONSTRAINT
 	heroes_id_key
 ;
 ```

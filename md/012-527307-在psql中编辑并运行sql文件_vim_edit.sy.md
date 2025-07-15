@@ -49,18 +49,47 @@ enable_checker: true
 
 ### 运行外部命令
 
-- 确实可以运行一些外部命令
+```
+\! ls
+\! pwd
+\! whoami
+\! vi /tmp/test.sql
+```
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671247215009)
+- 运行命令
+
+![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20240604-1717465511476)
 
 - 明确当前运行psql的用户是postgres
 - \\! vi /tmp/test.sql进行编辑
 
-![图片描述](https://doc.shiyanlou.com/courses/uid1190679-20221217-1671247381870)
+### 编写代码
+
+```
+DROP DATABASE 
+	IF EXISTS oeasydb;
+
+CREATE DATABASE 
+	oeasydb;
+
+\c oeasydb
+
+CREATE TABLE login(
+	username VARCHAR(20), 
+	password VARCHAR(20)
+);
+
+INSERT INTO
+	login(username,password)
+VALUES
+	('oeasy','123'),
+	('o2z','456'),
+	('o3z','789')
+;
+```
 
 - 编辑器的配色方案比较原始
-	- 而且文件是只读的
-- 有没有
+	d- 有没有
 	- 可以 直接编辑文件的 命令 呢？
 
 ### 编辑命令
